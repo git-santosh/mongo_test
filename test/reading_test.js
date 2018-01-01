@@ -4,7 +4,7 @@ const User = require('../src/user');
 let santosh;
 describe('reading user out of database ',()=>{
     beforeEach('',(done)=>{
-        santosh = new User({ name : "Santosh" , postCount:20});
+        santosh = new User({ name : "Santosh" , likes:20});
         santosh.save().then(()=>{
             assert(!santosh.isNew);
             done();
@@ -28,9 +28,9 @@ describe('reading user out of database ',()=>{
         })
     });
     it('postcount increment by 10',(done)=>{
-        User.findOneAndUpdate({'name':'Santosh'},{$inc:{postCount : 10}},{new:true}).lean().exec().then((users)=>{
+        User.findOneAndUpdate({'name':'Santosh'},{$inc:{likes : 10}},{new:true}).lean().exec().then((users)=>{
           
-            assert(users.postCount === 30);
+            assert(users.likes === 30);
             done();
         })
     })

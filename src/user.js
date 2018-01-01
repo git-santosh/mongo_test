@@ -11,10 +11,13 @@ let userSchema = new Schema({
         },
         required:[true,'Name is required.']
     },
-    postCount:Number,
+ likes:Number,
     posts :[postSchema]
 });
 
+userSchema.virtual('postCount').get(function(){
+    return this.posts.length;
+});
 let User = mongoose.model('User',userSchema);
 
 module.exports = User;
