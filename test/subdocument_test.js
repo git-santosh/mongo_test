@@ -23,4 +23,24 @@ describe('subdocuments',()=>{
             done();
         });
     });
+    it('can remove an existing sub document ', (done) =>{
+        const ganesh = new User({
+            name :'ganesh',
+            posts:[{
+                title:'tin tin cafe'
+            }]
+        });
+        ganesh.save()
+              .then(()=> User.findOne({name:'ganesh'}))
+              .then((user)=>{
+                  const post = user.posts[0];
+                  post.remove();
+                  return user.save();
+              })
+              .then(()=> User.findOne({name:'ganesh'}))
+              .then((user)=>{
+                 assert(user.posts.length === 0 );
+                  done();
+              });
+    });
 })
