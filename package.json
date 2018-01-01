@@ -1,0 +1,17 @@
+{
+  "name": "tdd_bdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "santosh suryawanshi",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^4.0.1",
+    "mongoose": "^4.13.4",
+    "nodemon": "^1.14.7"
+  }
+}
+ 
